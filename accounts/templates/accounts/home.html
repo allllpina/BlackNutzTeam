@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../static/images/background.jpg'); /* Замінити на відповідне зображення */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: rgba(40, 44, 52, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Movie Recommendation</h1>
+    </div>
+    <div class="container">
+        <p>This is the home page of the movie recommendation website.</p>
+        <p>Discover and choose movies that suit your taste!</p>
+
+        <!-- Кнопки для реєстрації та входу -->
+        <a href="{% url 'register' %}" class="btn">Register</a>
+        <a href="{% url 'login' %}" class="btn">Login</a>
+    </div>
+</body>
+</html>

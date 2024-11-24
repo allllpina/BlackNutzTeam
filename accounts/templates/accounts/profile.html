@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6e7dff, #00bfae); /* Градієнтний фон */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); /* Прозорий фон */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.1em;
+            color: #34495e;
+            margin-bottom: 40px;
+        }
+
+        .user-info {
+            margin-top: 30px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .user-info p {
+            margin-bottom: 20px;
+        }
+
+        .user-info strong {
+            color: #16a085;
+        }
+
+        .button-container {
+            text-align: center; /* Вирівнювання по центру */
+        }
+
+        .edit-btn {
+            display: inline-block;
+            background-color: #16a085;
+            color: #fff;
+            padding: 12px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-btn:hover {
+            background-color: #1abc9c;
+        }
+
+        footer {
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            font-size: 0.9em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome, {{ user.username }}!</h1>
+        <p>This is your profile page.</p>
+
+        <div class="user-info">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Joined on:</strong> {{ user.date_joined }}</p>
+        </div>
+
+        <!-- Обгортка для кнопки -->
+        <div class="button-container">
+            <a href="{% url 'recommendations' %}" class="edit-btn">Get Movie Recommendations</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Website. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

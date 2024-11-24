@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 1em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 1000px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Movie Recommendations</h1>
+    </header>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Enter a movie title" required>
+            <input type="number" name="count" placeholder="Number of recommendations" min="1" max="20" required>
+            <button type="submit">Get Recommendations</button>
+        </form>
+
+        {% if recommendations %}
+            {% if recommendations == "Movie not found." %}
+                <p class="message">{{ recommendations }}</p>
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Overview</th>
+                            <th>Language</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for movie in recommendations %}
+                            <tr>
+                                <td>{{ movie.original_title }}</td>
+                                <td>{{ movie.overview }}</td>
+                                <td>{{ movie.original_language }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        {% else %}
+            <p class="message">No recommendations yet. Try searching for a movie above!</p>
+        {% endif %}
+    </main>
+</body>
+</html>
